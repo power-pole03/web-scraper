@@ -16,4 +16,9 @@ else:
         for post in job_posts:
             anchors = post.find_all('a')
             anchor = anchors[1]
-            print(anchor['href'])
+            link = anchor['href']
+            company, kind, region = anchor.find_all('span', class_ ="company")
+            title = anchor.find('span', class_ = "title")
+            print(company, kind, region, title)
+            print("///////////////////////")
+            print("///////////////////////")
