@@ -21,7 +21,7 @@ else:
             company, work_time, region = anchor.find_all('span', class_ ="company")
             title = anchor.find('span', class_ = "title")
             job_data = {
-                'link' : link,
+                'link' : f"https://weworkremotely.com{link}",
                 'company' : company.string,
                 'work time' : work_time.string,
                 'region' : region.string,
