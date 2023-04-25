@@ -22,9 +22,11 @@ def extract_wwr_jobs(keyword):
                 job_data = {
                     'link' : f"https://weworkremotely.com{link}",
                     'company' : company.string,
-                    'work time' : work_time.string,
                     'location' : region.string,
                     'position' : title.string
                 }
+                for each in job_data:
+                    if job_data[each] != None:
+                        job_data[each] = job_data[each].replace(",", " ")
                 results.append(job_data)
         return results

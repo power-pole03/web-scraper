@@ -37,8 +37,8 @@ def extract_indeed_jobs(keyword):
         # opening the website using selenium
         base_url = "https://ca.indeed.com/jobs"
         final_url = f"{base_url}?q={keyword}&start={page*10}"
-        browser.get(final_url)
         print("Requesting", final_url)
+        browser.get(final_url)
 
         soup = BeautifulSoup(browser.page_source, "html.parser")
         job_list = soup.find("ul", class_ = "jobsearch-ResultsList")
@@ -58,10 +58,11 @@ def extract_indeed_jobs(keyword):
                         'link': f"https://ca.indeed.com{link}",
                         'company': company.string,
                         'location': location.string,
-                        'position': title,
+                        'position': title
                     }
+                    for each in job_data:
+                        if job_data[each] != None:
+                            job_data[each] = job_data[each].replace(",", " ")
                     results.append(job_data)
         return results
-    while(True):
-        pass
     
